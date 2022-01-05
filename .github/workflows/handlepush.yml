@@ -10,7 +10,7 @@ on:
    # Jobs to be executed
 jobs:
     pmd-run:
-        runs-on: windows-latest
+        runs-on: ubuntu-latest
         steps:
         # Checkout the source code
             - name: 'Checkout source code'

@@ -4,7 +4,7 @@ public with sharing class AddNumbers {
         System.debug('Inside constructor');
     }
 
-    public Integer addandres(Integer firstnum, nteger secondnum){
+    public Integer addandres(Integer firstnum, Integer secondnum){
         return firstnum+secondnum;
     }
 }

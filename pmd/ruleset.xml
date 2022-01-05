@@ -6,7 +6,12 @@
     xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd"
 >
    <description>Security Rules for Apex</description>
-
+   <rule
+        ref="category/apex/bestpractices.xml/ApexUnitTestClassShouldHaveAsserts"
+        message="Apex test classes should use assert statement"
+    >
+      <priority>3</priority>
+   </rule>
    <rule
         ref="category/apex/security.xml/ApexSharingViolations"
         message="Apex classes should declare a sharing model if DML or SOQL is used"

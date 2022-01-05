@@ -9,8 +9,8 @@ on:
     branches: feature
    # Jobs to be executed
 jobs:
-pmd-execution:
-runs-on: windows-latest
+    pmd-run:
+        runs-on: windows-latest
         steps:
         # Checkout the source code
             - name: 'Checkout source code'

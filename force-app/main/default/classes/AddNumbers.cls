@@ -1,3 +1,4 @@
+//class
 public with sharing class AddNumbers {
     public AddNumbers() {
         System.debug('Inside constructor');

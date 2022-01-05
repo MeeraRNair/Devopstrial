@@ -53,4 +53,15 @@ jobs:
                       echo "Missing DEVHUB_SFDX_URL secret. Is this workflow running on a fork?";
                       exit 1;
                   fi
-  
+                  
+          # Authenticate dev hub
+            - name: 'Authenticate Dev Hub'
+              run: sfdx auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
+
+            # Create scratch org
+            - name: 'Create scratch org'
+              run: sfdx force:org:create -f config/project-scratch-def.json -a scratch-org -s -d 1
+
+            # Deploy source to scratch org
+            - name: 'Push source to scratch org'
+              run: sfdx force:source:push 

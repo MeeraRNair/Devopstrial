@@ -39,7 +39,7 @@ jobs:
             fi            
             fi
           done
-          echo '::set-output name=CHANGED_FILES:: $res'       
+          echo ::set-output name=CHANGED_FILES:: $res       
           
           
     # Checkout the source code

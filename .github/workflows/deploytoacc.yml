@@ -27,7 +27,7 @@ jobs:
             - name: 'Populate auth file with ACC_SFDX_URL secret'
               shell: bash
               run: |
-                  echo ${{ secrets.ACC_SFDX_URL}} > ./DEVHUB_SFDX_URL.txt
+                  echo ${{ secrets.ACC_SFDX_URL}} > ./ACC_SFDX_URL.txt
                   secretFileSize=$(wc -c "./ACC_SFDX_URL.txt" | awk '{print $1}')
                   if [ $secretFileSize == 1 ]; then
                       echo "Missing ACC_SFDX_URL secret. Is this workflow running on a fork?";

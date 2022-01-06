@@ -25,6 +25,9 @@ jobs:
           
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do          
           echo $file
-          filenam=$(contains(file,'yml'))
-          echo $filenam           
+          
+          if [[ $file == *"yml"* ]]; then
+           echo "It's there!"
+          fi
+                 
           done

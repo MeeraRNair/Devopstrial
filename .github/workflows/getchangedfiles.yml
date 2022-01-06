@@ -24,7 +24,7 @@ jobs:
         run: |
           varcnt=1
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-          if [[ $file != *"yml"* ]]; then
+          if [[ $file == *"yml"* ]]; then
              if [[ $varcnt == 2 ]];then
              res="${res},${file}"
              echo $res
@@ -67,4 +67,7 @@ jobs:
               
       # Deploy source to Acc org
       - name: 'Push source to Acc org'
-        run: sfdx force:source:deploy -u meeraacc@gmail.com -p ./FILE_DIFF.txt
+        run: |
+          pathdet=echo ./FILE_DIFF.txt
+          echo $pathdet
+          

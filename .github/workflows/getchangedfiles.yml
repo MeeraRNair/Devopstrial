@@ -27,5 +27,5 @@ jobs:
           echo contains(steps.changed-files.outputs.all_changed_files, 'yml')
            # if [ contains(steps.changed-files.outputs.all_changed_files, 'yml')]; then
             #echo "$file was changed"  
-            fi
+           # fi
           done

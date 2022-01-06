@@ -25,9 +25,9 @@ jobs:
           
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do          
           echo $file
-          
-          if [[ $file == *"yml"* ]]; then
-           echo "It's there!"
-          fi
-                 
+          sep = ","
+          if [[ $file != *"yml"* ]]; then
+           res = "${res},${file}"
+          fi                 
           done
+          echo $res

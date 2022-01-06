@@ -23,8 +23,7 @@ jobs:
       - name: List all changed files
         run: |
           
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-          
-          filenam = contains(steps.changed-files.outputs.all_changed_files, 'yml')
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do          
+          filenam = steps.changed-files.outputs.all_changed_files
           echo $filenam           
           done

@@ -24,6 +24,6 @@ jobs:
         run: |
           
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do          
-          filenam = steps.changed-files.outputs.all_changed_files
+          filenam = $file
           echo $filenam           
           done

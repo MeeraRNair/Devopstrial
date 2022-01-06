@@ -22,8 +22,9 @@ jobs:
 
       - name: List all changed files
         run: |
-          filename : join(${{ steps.changed-files.outputs.all_changed_files }},',')
-          echo filename
+          
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            if [!contains($file, 'yml')] then
             echo "$file was changed"
+            
           done

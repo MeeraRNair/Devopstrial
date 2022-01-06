@@ -11,6 +11,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Test changed-files
+    env:
+      FILE_DIFF_DETAILS: ''
     steps:
       - uses: actions/checkout@v2
         with:
@@ -36,7 +38,8 @@ jobs:
             fi            
             fi
           done
-          echo $res > ./FILE_DIFF.txt
+          ${{ env.FILE_DIFF_DETAILS }} = $res
+          echo ${{ env.FILE_DIFF_DETAILS }}
           
     # Checkout the source code
       - name: 'Checkout source code'
@@ -67,7 +70,6 @@ jobs:
               
       # Deploy source to Acc org
       - name: 'Push source to Acc org'
-        run: |
-          pathdet=echo ./FILE_DIFF.txt
-          echo $pathdet
+        run: sfdx force:source:deploy -u meeraacc@gmail.com -p ${{ env.FILE_DIFF_DETAILS }}
+          
           

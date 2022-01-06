@@ -30,10 +30,6 @@ jobs:
             res=$file
             echo $res
             varcnt=2
-            fi
-            if [[$varcnt == 2]];then
-           res="${res},${file}"
-           echo $res
-          fi                 
+            fi                            
           done
           echo $res

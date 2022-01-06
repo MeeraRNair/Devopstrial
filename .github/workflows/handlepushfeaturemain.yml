@@ -27,12 +27,13 @@ jobs:
             - name: 'Run PMD scan'
               run: ~/pmd/bin/run.sh pmd -d force-app -R pmd/ruleset.xml -f text
             
-            #Create pull request
-            - name: Run the Action
-              uses: devops-infra/action-pull-request@v0.4.2
-              with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                source_branch: feature
-                target_branch: master
-                title: My pull request 
-                get_diff: true                           
+    action-pull-request:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+        - name: Create pull request
+          uses: devops-infra/action-pull-request@v0.4.2
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            title: Automatic pull request                           

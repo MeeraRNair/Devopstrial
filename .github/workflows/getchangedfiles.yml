@@ -24,8 +24,7 @@ jobs:
         run: |
           
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do          
-          echo $file
-          sep = ","
+          echo $file          
           if [[ $file != *"yml"* ]]; then
            res = "${res},${file}"
           fi                 

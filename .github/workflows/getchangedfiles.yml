@@ -27,7 +27,7 @@ jobs:
         run: |
           varcnt=1
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-          if [[ $file == *"yml"* ]]; then
+          if [[ $file != *"yml"* ]]; then
              if [[ $varcnt == 2 ]];then
              res="${res},${file}"
              echo $res
@@ -74,6 +74,7 @@ jobs:
         run: |
             echo "value from output variable is"
             echo ${{ steps.changedfiles.outputs.CHANGED_FILES }}
+            sfdx force:source:deploy -u meeraacc@gmail.com -p ${{ steps.changedfiles.outputs.CHANGED_FILES }}
             
           
           

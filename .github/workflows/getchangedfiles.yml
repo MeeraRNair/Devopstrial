@@ -25,6 +25,10 @@ jobs:
           varcnt=1
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           if [[ $file == *"yml"* ]]; then
+             if [[ $varcnt == 2 ]];then
+             res="${res},${file}"
+             echo $res
+            fi 
             if [[ $varcnt == 1 ]]; then
             res=$file
             echo $res

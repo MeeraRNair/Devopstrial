@@ -41,3 +41,17 @@ jobs:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             title: Automatic pull request                           
             get_diff: true
+      #approve pull request      
+      - name: Approve Pull Request
+        uses: juliangruber/approve-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: 1
+     
+     #merge pull request    
+      - name: Merge Pull Request
+        uses: juliangruber/merge-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: 1
+          method: squash

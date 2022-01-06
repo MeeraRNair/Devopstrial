@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Merge
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: master
+   # Jobs to be executed
+jobs:
+    deploy-acc:
+        runs-on: ubuntu-latest
+        steps:
+        # Checkout the source code
+            - name: 'Checkout source code'
+              uses: actions/checkout@v2
+        # Install Salesforce CLI
+            - name: 'Install Salesforce CLI'
+              run: |
+                  wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
+                  mkdir ~/sfdx
+                  tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
+                  echo "$HOME/sfdx/bin" >> $GITHUB_PATH
+                  ~/sfdx/bin/sfdx version
+                  
+        # Store secret for acc org
+            - name: 'Populate auth file with ACC_SFDX_URL secret'
+              shell: bash
+              run: |
+                  echo ${{ secrets.ACC_SFDX_URL}} > ./DEVHUB_SFDX_URL.txt
+                  secretFileSize=$(wc -c "./ACC_SFDX_URL.txt" | awk '{print $1}')
+                  if [ $secretFileSize == 1 ]; then
+                      echo "Missing ACC_SFDX_URL secret. Is this workflow running on a fork?";
+                      exit 1;
+                  fi
+            # Authenticate acc
+            - name: 'Authenticate Acc'
+              run: sfdx auth:sfdxurl:store -f ./ACC_SFDX_URL.txt -a meeraacc -d
+              
+            # Deploy source to Acc org
+            - name: 'Push source to Acc org'
+              run: sfdx force:source:deploy
+
+   

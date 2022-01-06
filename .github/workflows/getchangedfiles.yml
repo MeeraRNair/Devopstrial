@@ -26,7 +26,7 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do          
           echo $file          
           if [[ $file == *"yml"* ]]; then
-           res = "${res},${file}"
+           res="${res},${file}"
            echo $res
           fi                 
           done

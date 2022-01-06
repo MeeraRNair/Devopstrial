@@ -30,10 +30,14 @@ jobs:
     action-pull-request:
       runs-on: ubuntu-latest
       steps:
-        - name: Checkout repository
-          uses: actions/checkout@v2
-        - name: Create pull request
-          uses: devops-infra/action-pull-request@v0.4.2
-          with:
+      - name: Checkout repoistory
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Run the Action
+        if: startsWith(github.ref, 'refs/heads/feature')
+        uses: devops-infra/action-pull-request@v0.4.2
+        with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             title: Automatic pull request                           
+            get_diff: true

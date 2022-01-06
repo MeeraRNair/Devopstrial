@@ -25,6 +25,6 @@ jobs:
           
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do          
           echo $file,'yml'
-          filenam=$[[ contains($file,'yml') ]]
+          filenam=${{contains($file,'yml')}}
           echo $filenam           
           done

@@ -27,6 +27,7 @@ jobs:
           echo $file          
           if [[ $file != *"yml"* ]]; then
            res = "${res},${file}"
+           echo $res
           fi                 
           done
           echo $res

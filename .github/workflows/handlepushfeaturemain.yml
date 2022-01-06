@@ -32,4 +32,7 @@ jobs:
               uses: devops-infra/action-pull-request@v0.4.2
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                
+                source_branch: feature
+                target_branch: master
+                title: My pull request 
+                get_diff: true                           

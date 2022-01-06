@@ -24,7 +24,6 @@ jobs:
         run: |
           
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            if [[ contains(echo $file, 'yml') ]]; then
-            echo "$file was changed"
-            fi
+            if : !contains(echo $file, 'yml')
+            echo "$file was changed"            
           done

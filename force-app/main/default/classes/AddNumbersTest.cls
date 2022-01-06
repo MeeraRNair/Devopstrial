@@ -1,4 +1,4 @@
-//test get diff new
+//test get diff new 1
 @isTest
 private class AddNumbersTest {
    @isTest static void AddNumbersTest() {

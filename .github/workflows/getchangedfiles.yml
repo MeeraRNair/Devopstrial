@@ -23,6 +23,7 @@ jobs:
         uses: tj-actions/changed-files@v13
 
       - name: List all changed files
+        id: changedfiles
         run: |
           varcnt=1
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
@@ -38,8 +39,8 @@ jobs:
             fi            
             fi
           done
-          ${{ env.FILE_DIFF_DETAILS }} = $res
-          echo ${{ env.FILE_DIFF_DETAILS }}
+          echo '::set-output name=CHANGED_FILES:: $res'       
+          
           
     # Checkout the source code
       - name: 'Checkout source code'
@@ -70,6 +71,9 @@ jobs:
               
       # Deploy source to Acc org
       - name: 'Push source to Acc org'
-        run: sfdx force:source:deploy -u meeraacc@gmail.com -p ${{ env.FILE_DIFF_DETAILS }}
+        run: |
+            echo "value from output variable is"
+            echo ${{ steps.changedfiles.outputs.CHANGED_FILES }}
+            
           
           

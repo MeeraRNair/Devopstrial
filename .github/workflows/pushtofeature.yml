@@ -37,6 +37,6 @@ jobs:
         if: startsWith(github.ref, 'refs/heads/feature')
         uses: peter-evans/create-pull-request@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch: master         

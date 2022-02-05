@@ -38,3 +38,5 @@ jobs:
                   source_branch: featurebranch
                   target_branch: master
                   title: My pullrequest
+                  get_diff: true
+                  ignore_users: "dependabot"

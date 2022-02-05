@@ -38,8 +38,3 @@ jobs:
                 source_branch: development
                 target_branch: master
                 title: My pull request
-
-               
-            
-© 2022 GitHub, Inc.
-Terms

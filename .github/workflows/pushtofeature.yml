@@ -31,12 +31,8 @@ jobs:
           runs-on: ubuntu-latest
           steps:
           # create pull request
-              - name: 'Create pull request'
-                uses: devops-infra/action-pull-request@v0.4.2
-                with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  source_branch: featurebranch
-                  target_branch: master
-                  title: My pullrequest
-                  get_diff: true
-                  ignore_users: "dependabot"
+              # Checkout the source code
+            - name: 'Checkout source code'
+              uses: actions/checkout@v2 
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v3

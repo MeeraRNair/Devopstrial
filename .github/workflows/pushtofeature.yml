@@ -35,8 +35,10 @@ jobs:
           fetch-depth: 0
       - name: Run the Action
         if: startsWith(github.ref, 'refs/heads/feature')
-        uses: peter-evans/create-pull-request@v3
+        uses: devops-infra/action-pull-request@v0.4.2
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
         with:
-          branch: master         
+            github_token: ${{ secrets.REPO_SCOPED_TOKEN }}
+            title: Automatic pull request                           
+            get_diff: true         

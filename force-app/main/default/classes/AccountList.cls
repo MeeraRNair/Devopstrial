@@ -1,4 +1,4 @@
-public without sharing class  AccountList { //comment new for push new new one
+public without sharing class  AccountList { //comment new for push new new one new
     //get account details here
     @AuraEnabled(cacheable=true)
     public static List<Account> getAccountList() {

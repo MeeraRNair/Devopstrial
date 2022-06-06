@@ -34,7 +34,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Run the Action
-        if: startsWith(github.ref, 'refs/heads/feature')
+        if: startsWith(github.ref, 'refs/heads/demo')
         uses: devops-infra/action-pull-request@v0.4.2
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}

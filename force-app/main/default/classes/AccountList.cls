@@ -45,6 +45,6 @@ public without sharing class  AccountList { //comment new for push new new one n
 
     @AuraEnabled(cacheable=true)
     public static List<Contact> getContactList() {
-        return [SELECT Id, FirstName,LastName,Email FROM Contact];
+        return [SELECT Id, FirstName, LastName, Email FROM Contact];
     }
 }

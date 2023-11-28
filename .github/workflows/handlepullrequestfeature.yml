@@ -54,6 +54,13 @@ jobs:
                       exit 1;
                   fi
                   
+ 
+          - run: echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
+
+          #Authenticateb2bdev
+          - name: 'Authenticate B2B Dev'
+            run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username=${{ secrets.SALESFORCE_DEVHUB_USERNAME }} --setdefaultdevhubusername
+          #- run: sfdx force:source:deploy --manifest=manifest/package.xml --testlevel=RunLocalTests -u ${{ secrets.SALESFORCE_DEVHUB_USERNAME }}
           # Authenticate dev hub
             - name: 'Authenticate Dev Hub'
               run: sfdx auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d

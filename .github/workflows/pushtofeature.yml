@@ -3,9 +3,9 @@
 name: PushToFeature
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push or pull request events but only for the master branche
   push:
-    branches: demobranch
+    branches: tgaCheck
    # Jobs to be executed
 jobs:
     pmd-run:
@@ -23,7 +23,7 @@ jobs:
                   unzip pmd-bin-$PMD_VERSION.zip -d ~
                   mv ~/pmd-bin-$PMD_VERSION ~/pmd
                   ~/pmd/bin/run.sh pmd --version
-            # Run PMD scan
+            # Run PMD scan donot know why
             - name: 'Run PMD scan'
               run: ~/pmd/bin/run.sh pmd -d force-app -R pmd/ruleset.xml -f text
     action-pull-request:

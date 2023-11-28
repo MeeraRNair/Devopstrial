@@ -9,5 +9,5 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install sfdx-cli -g
       - run: echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
-      - run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username=${{ secrets.SALESFORCE_DEVHUB_USERNAME }} --setdefaultdevhubusername
+      - run: sfdx force:auth:jwt:grant --client-id=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwt-key-file=server.key --username=${{ secrets.SALESFORCE_DEVHUB_USERNAME }} --set-default-dev-hub
       - run: sfdx force:source:deploy --manifest=manifest/package.xml --testlevel=RunLocalTests -u ${{ secrets.SALESFORCE_DEVHUB_USERNAME }}
